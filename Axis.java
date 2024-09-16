@@ -99,21 +99,23 @@ class Axis implements Bank {
     @Override
     public void forgotPassword(String username) {
         User user = findUser(username);
+        boolean accFound=false;
         for(Account acc: accounts) {
         	if (user != null&& acc.getOwner().equals(user)) {
             	Scanner sc=new Scanner(System.in);
-            	System.out.print("Enter password: ");
+            	System.out.print("Enter new password: ");
                 String password = sc.nextLine();
             	user.setPassword(password);
         		System.out.println("Password updated");
-            }else {
-            	System.out.println("Error: User does not own this account.");
+        		accFound=true;
+            }else if(user ==null) {
+            	System.out.println("User not found.");
             	return;
             }
         }
-        System.out.println("User not found."); 
-        	
-        
+        if(accFound==false) {
+        	System.out.println("Error: User does not own this account.");
+        }
     }
     
     

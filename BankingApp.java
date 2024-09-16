@@ -1,10 +1,5 @@
 package New_Bank_Project;
 
-/*Note:
- * Map<String, BankObject> visitedBanks = new HashMap<>();
- * bank name as key and BankObject as value.
- */
-
 import java.util.Scanner;
 
 public class BankingApp {
@@ -13,21 +8,15 @@ public class BankingApp {
 
 	private static Bank currentBank;
 	private static Bank previousBank;
-	private static Bank tempBank;
 	private static Bank selectedBank;
 	private static boolean re_run=false;
-	//3Scanner sc = new Scanner(System.in);
+	//Scanner sc = new Scanner(System.in);
 	
 	private static void chooseBank(){
-		//currentBank=previousBank;
-		//tempBank=previousBank;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Choose a bank: SBI or Axis");
         String bankName = sc.nextLine();
         selectedBank = BankFactory.getBank(bankName);
-        //currentBank = BankFactory.getBank(bankName);
-        //tempBank=currentBank;
-        //previousBank=tempBank;
 
             if (selectedBank == null) {
             	System.out.println("invalid bank type.");
@@ -40,14 +29,7 @@ public class BankingApp {
                     currentBank = selectedBank;
                     previousBank = currentBank;
                 }
-            }/*else if(re_run) {
-            	currentBank=tempBank;
             }
-            else {
-                currentBank = selectedBank;
-                previousBank = currentBank;
-            }*/
-        
 	}
 	
 	public static void main(String[] args) {
