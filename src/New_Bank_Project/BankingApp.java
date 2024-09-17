@@ -1,6 +1,8 @@
 package New_Bank_Project;
 
-import java.util.Scanner;
+import java.util.Scanner; 
+
+
 
 public class BankingApp {
 	
@@ -90,14 +92,14 @@ public class BankingApp {
 	                                            accountNumber = sc.nextLine();
 	                                            System.out.print("Enter amount to deposit: ");
 	                                            double amount = sc.nextDouble();
-	                                            currentBank.deposit(accountNumber, amount,loggedInUser);
+	                                            currentBank.deposit(accountNumber, amount, loggedInUser);
 	                                            break;
 	                                        case 2:
 	                                            System.out.print("Enter account number: ");
 	                                            accountNumber = sc.nextLine();
 	                                            System.out.print("Enter amount to withdraw: ");
 	                                            amount = sc.nextDouble();
-	                                            currentBank.withdraw(accountNumber, amount,loggedInUser);
+	                                            currentBank.withdraw(accountNumber, amount, loggedInUser);
 	                                            break;
 	                                        case 3:
 	                                            System.out.print("Enter from account number: ");
@@ -106,7 +108,7 @@ public class BankingApp {
 	                                            String toAccount = sc.nextLine();
 	                                            System.out.print("Enter amount to transfer: ");
 	                                            amount = sc.nextDouble();
-	                                            currentBank.transfer(fromAccount, toAccount, amount,loggedInUser);
+	                                            currentBank.transfer(fromAccount, toAccount, amount, loggedInUser);
 	                                            break;
 	                                        case 4:
 	                                            System.out.print("Enter username: ");
@@ -121,18 +123,18 @@ public class BankingApp {
 	                                        case 5:
 	                                            System.out.print("Enter username: ");
 	                                            username = sc.nextLine();
-	            	                            currentBank.forgotPassword(username);
+	            	                            currentBank.forgotPassword(username, loggedInUser);
 	                                            break;
 	                                        case 6:
 	                                            System.out.print("Enter account number: ");
 	                                            accountNumber = sc.nextLine();
-	                                            double balance = currentBank.checkBalance(accountNumber,loggedInUser);
+	                                            double balance = currentBank.checkBalance(accountNumber, loggedInUser);
 	                                            System.out.println("Current balance: " + balance);
 	                                            break;
 	                                        case 7:
 	                                        	System.out.print("Enter account number: ");
 	                                            accountNumber = sc.nextLine();
-	                                            currentBank.transactionHistory(accountNumber,loggedInUser);
+	                                            currentBank.transactionHistory(accountNumber, loggedInUser);
 	                                            break;
 	                                        case 8:
 	                                        	loggedIn = false;
@@ -149,7 +151,7 @@ public class BankingApp {
 	                        case 3:
 	                        	chooseBank();
 	                        	re_run=true;
-	                        	//loggedInUser=null;
+	                        	loggedInUser=null;
 	            				break;
 	                        default:
 	                            System.out.println("Invalid choice.");
