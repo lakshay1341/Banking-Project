@@ -111,28 +111,27 @@ class SBI implements Bank {
     
     @Override
     public void forgotPassword(String username, User loggedUser) {
+        if (loggedUser == null) {
+            System.out.println("Unauthorized: please log in first.");
+            return;
+        }
+
+        if (!loggedUser.getUsername().equals(username)) {
+            System.out.println("Unauthorized: you can only change your own password.");
+            return;
+        }
+
         User user = findUser(username);
         if (user == null) {
             System.out.println("User not found.");
             return;
         }
 
-        boolean accFound = false;
-        for (Account acc : accounts) {
-        	
-        	Scanner sc = new Scanner(System.in); 
-            System.out.print("Enter new password: ");
-            String password = sc.nextLine();
-            user.setPassword(password);
-            System.out.println("Password updated");
-            accFound = true;
-            break; 
-           
-        }
-
-        if (!accFound) {
-            System.out.println("Error: User does not own this account.");
-        }
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter new password: ");
+        String password = sc.nextLine();
+        user.setPassword(password);
+        System.out.println("Password updated");
     }
 
     
